@@ -6,7 +6,7 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 
 class BM25:
-    def __init__(self, documents, k1=1.5, b=0.75):
+    def __init__(self, documents, k1=1.0, b=1.0):
         self.documents = documents
         self.k1 = k1
         self.b = b
@@ -71,11 +71,18 @@ class BM25:
         term_frequencies = []  # List to store term frequencies for each document
         for doc in self.documents:
             frequencies = defaultdict(int)
+            total_terms = 0
             for field in self.field_weights:
                 for token in doc[field]:
                     frequencies[token] += self.field_weights[
                         field
                     ]  # field weights modifies the term frequency of a term as if that field was repeated field_weight times
+                    total_terms += self.field_weights[field]
+            
+            # Normalize frequencies by the total number of terms
+            for token in frequencies:
+                frequencies[token] /= total_terms
+
             # Append frequencies for this document
             term_frequencies.append(frequencies)
         return term_frequencies
@@ -176,14 +183,6 @@ class BM25:
             scores.append(score)
         return scores
 
-    def aux_interleave(list1, list2):
-        result = []
-        for i in range(max(len(list1), len(list2))):
-            if i < len(list1):
-                result.append(list1[i])
-            if i < len(list2):
-                result.append(list2[i])
-        return result
 
     def get_bm25_combined_cosine_sim_scores(self, query):
         """Calculate combined scores using both BM25 and cosine similarity and filter results."""
@@ -204,12 +203,12 @@ class BM25:
         ]
     
         # Filter documents based on score thresholds
-        bm25_high_threshold = 8.0
-        bm25_med_threshold = 5.5
-        bm25_low_threshold = 3.0
-        cosine_high_threshold = 0.60
-        cosine_med_threshold = 0.40
-        cosine_low_threshold = 0.20
+        bm25_high_threshold = 0.60
+        bm25_med_threshold = 0.40
+        bm25_low_threshold = 0.20
+        cosine_high_threshold = 0.30
+        cosine_med_threshold = 0.20
+        cosine_low_threshold = 0.10
 
         # Initialize lists to hold high, medium, and low documents for both BM25 and cosine similarity scores
         high_bm25_docs = []

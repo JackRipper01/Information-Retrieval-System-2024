@@ -2,9 +2,16 @@ import numpy as np
 import streamlit as st
 from document_processor import DocumentProcessor
 from custom_bm25 import BM25
+import os
 
-# Path to your dataset
-file_path = r"datasets\cranfield_dataset.txt"
+# Get the directory of the current script
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Go up one directory to the parent folder of 'src'
+parent_dir = os.path.dirname(current_dir)
+
+# Construct the path to the dataset
+file_path = os.path.join(parent_dir, 'datasets', 'cranfield_dataset.txt')
 
 
 @st.cache_data
