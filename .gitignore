@@ -2,3 +2,5 @@ __pycache__/custom_bm25.cpython-311.pyc
 .vscode/settings.json
 __pycache__/document_processor.cpython-311.pyc
 __pycache__/tokenization.cpython-311.pyc
+__pycache__/
+.vscode/
