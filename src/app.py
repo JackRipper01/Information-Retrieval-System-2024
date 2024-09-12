@@ -31,12 +31,6 @@ def initialize_bm25(documents):
 document_processor = load_documents(file_path)
 documents = document_processor.documents
 
-# Search for the word "investigations" in the content of each document
-search_word = "investigations"
-for doc in documents:
-    if search_word in doc['content']:
-        print(f"Word '{search_word}' found in document ID: {doc['id']}")
-        break
 
 # Instantiate the BM25 class with the processed documents
 bm25 = initialize_bm25(documents)
@@ -55,7 +49,7 @@ if query:
     # Calculate combined scores for the query
     tuple_bm25_cos_doc = bm25.get_bm25_combined_cosine_sim_scores(query)
 
-    # Use a list comprehension instead of a set comprehension
+    # Using a list comprehension 
     output = [(bm25_score, cosine_score, document_processor.raw_documents[int(
         doc['id']) - 1]) for bm25_score, cosine_score, doc in tuple_bm25_cos_doc]
 
