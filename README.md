@@ -1,7 +1,14 @@
-# Information-Retrieval-System-2024
-Fair Information Retrieval:
+### 🔍 Precision Information Retrieval System: Delivering Highly Relevant Search Results
 
-Information Retrieval Systems propose a model and a similarity function between the query and the pre-processed data of the system. Then, the system returns the information that responds to the query in an ordered manner.
-The goal is to find a model and/or metrics that filter the data and only return information that truly answers the query. To achieve this, it is necessary to implement a system according to the needs described in the previous sentence
+This project develops an advanced **Information Retrieval System** designed to tackle the critical challenge of **'Fair Information Retrieval'**. The goal is to move beyond simple keyword matching, meticulously filtering and ranking data to ensure that only the information truly relevant to a user's query is returned.
 
-This was solved implementing a combination of ,after the tf-idf vectorial transformation ,  BM-25 metric and cosine similarity. Was used the framework streamlit for the frontend and python for backend
+**Key Technical Achievements & Demonstrated Skills:**
+*   **Comprehensive IR Modeling:** Designed and implemented a robust information retrieval model capable of efficiently processing and indexing diverse datasets.
+*   **Advanced Ranking Algorithm Integration:** Leveraged a powerful combination of industry-standard ranking algorithms:
+    *   **TF-IDF (Term Frequency-Inverse Document Frequency):** For vector space model transformation and initial relevance scoring.
+    *   **BM-25 (Okapi BM25):** A probabilistic ranking function used for fine-tuning relevance based on query terms.
+    *   **Cosine Similarity:** Applied for computing similarity scores between queries and documents in the vector space.
+*   **Full-Stack Development:** Engineered the system with a robust **Python** backend for all retrieval logic and data processing, complemented by an interactive and user-friendly frontend built with **Streamlit**.
+*   **Data Preprocessing & Query Optimization:** Implemented techniques for efficient data preprocessing and query analysis to enhance retrieval accuracy.
+
+This system demonstrates a strong foundation in **Information Retrieval theory**, **search algorithm implementation**, and **practical full-stack development**.
